@@ -30,7 +30,6 @@ public class Ex1 {
 		
 		Scanner ler = new Scanner(System.in);
 		
-		
 		int opcao = 0;
 		do {
 			System.out.println("Escolha uma opçao: ");
@@ -86,7 +85,7 @@ public class Ex1 {
 		
 		
 		
-		}
+	}
 	
 	//verifica o tamanho da pilha
 	public static int size() {
