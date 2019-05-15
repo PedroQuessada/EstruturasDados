@@ -1,4 +1,4 @@
-package Ex27;
+package Ex28;
 
 import java.util.Scanner;
 
@@ -15,11 +15,11 @@ public class Main {
 		
 		do {
 			System.out.println("1- Inserir elemento");
-			System.out.println("2- Remover elemento");
+			System.out.println("2- Inserir Atual");
 			System.out.println("3- Apresenta atual");
 			System.out.println("4- Apresenta proximo");
 			System.out.println("5- Apresenta anterior");
-			System.out.println("6- Sair");
+			System.out.println("6- Remover atual");
 			opcao = ler.nextInt();
 			
 			if(opcao == 1) {
@@ -32,8 +32,9 @@ public class Main {
 					System.out.println("A lista está vazia!");
 				}
 				else {
-					System.out.println("O elemento: " + lista.removerDoFinal() + " Foi removido do final");
+					System.out.println("O elemento: " + lista.removerDoFinal() + " Foi adicionado na posicao atual");
 				}
+				
 			}
 			else if(opcao == 3) {
 				
@@ -67,12 +68,20 @@ public class Main {
 				}
 			}
 			else if(opcao == 6){
+				if(lista.isEmpty()) {
+					System.out.println("A lista está vazia!");
+				}
+				else {
+					System.out.println("O elemento: " + lista.removerDoFinal() + " Foi removido");
+				}
+			}
+			else if(opcao == 7) {
 				System.out.println("Saindo...");
 			}
 			else {
 				System.out.println("Opcao invalida tente novamente");
 			}
-		}while(opcao != 6);
+		}while(opcao != 7);
 		
 	}
 

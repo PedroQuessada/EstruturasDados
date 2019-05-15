@@ -1,4 +1,6 @@
-package Ex27;
+package Ex28;
+
+import Ex27.No;
 
 public class NoMetodos {
 
@@ -31,25 +33,44 @@ public class NoMetodos {
 		return true;
 	}
 	
+	
+	
+	public boolean inserirNoAtual(int elemento) {		
+		No proximo = ponteiro.getProximo(); 
+		No novo = new No(elemento, proximo, ponteiro);
+		proximo.setAnterior(novo);
+		ponteiro.setProximo(novo);
+		ponteiro = novo;
+		tamanho++;
+		return true;
+	}
+	
 	public int removerDoFinal() {
-		int elemento;
-		
-		elemento = fim.getElemento();
-		
-		if(tamanho == 1) {
-			inicio = null;
-			fim = null;
-			ponteiro = null;
+			
+		if(ponteiro.getAnterior() == null) {
+			No proximo = ponteiro.getProximo();
+			proximo.setAnterior(null);
+			tamanho--;
+			ponteiro = proximo;
+			return ponteiro.getElemento();
+		}
+		else if(ponteiro.getProximo() == null) {
+			No anterior = ponteiro.getAnterior();
+			anterior.setProximo(null);
+			tamanho--;
+			ponteiro = anterior;
+			return ponteiro.getElemento();
+		}else {
+			No anterior = ponteiro.getAnterior();
+			No proximo = ponteiro.getProximo();
+			anterior.setProximo(proximo);
+			proximo.setAnterior(anterior);
+			int elemento = ponteiro.getElemento();
+			ponteiro = anterior;
 			tamanho--;
 			return elemento;
 		}
-		else {
-			fim = fim.getAnterior();
-			fim.setProximo(null);
-			ponteiro = inicio;
-			tamanho--;
-			return elemento;
-		}
+		
 	}
 	
 	
@@ -60,7 +81,7 @@ public class NoMetodos {
 	}
 	
 	public boolean primeiro() {
-		if(ponteiro.getProximo() == null) return true;
+		if(ponteiro.getAnterior() == null) return true;
 		else return false;
 	}
 	
@@ -75,7 +96,7 @@ public class NoMetodos {
 	
 	public int apresentaProximo() {
 		ponteiro = ponteiro.getProximo();
-		return ponteiro.getElemento();
+		return ponteiro.getElemento();		
 	}
 	
 	public int apresentaAnterior() {
